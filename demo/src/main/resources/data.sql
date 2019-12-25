@@ -1,0 +1,2 @@
+insert into USER (budget,city_of_birth,date_of_birth, email, first_name, last_name, password, user_name) values (1000, 'Békéscsaba', '1990-11-07', 'vajgi90@gmail.com', 'Tamás', 'Vajgely', '1234', 'vajgi90');
+insert into USER (budget,city_of_birth,date_of_birth, email, first_name, last_name, password, user_name) values (10000, 'Záhony', '1999-10-10', 'kolbasz@gmail.com', 'István', 'Kovács', '5687', 'isti75');

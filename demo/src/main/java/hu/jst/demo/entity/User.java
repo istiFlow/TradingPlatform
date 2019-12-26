@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name="users")
 public class User {
 
     @Id
@@ -11,9 +12,15 @@ public class User {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
-    private String userName;
+
+
+    @Column(unique = true, nullable = false)
     private String email;
+
+    @Column(nullable = false)
     private String password;
+
+    private String userName;
     private String firstName;
     private String lastName;
     private String cityOfBirth;

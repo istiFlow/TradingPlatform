@@ -30,6 +30,11 @@ public class UserController {
         return userService.saveUser(user);
     }
 
+    @PutMapping(value = "user/{id}", consumes="application/json")
+    public User updateUser(@PathVariable Long id, @RequestBody User user) {
+        return userService.updateUser(id, user);
+    }
+
     @DeleteMapping(value = "user/{id}" )
     public void deleteUser(@PathVariable long id) {
         userService.deleteUser(id);

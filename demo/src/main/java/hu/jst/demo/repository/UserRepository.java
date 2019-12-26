@@ -9,9 +9,12 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User, Long> {
 
     @Override
-    List<User> findAll();
+    public List<User> findAll();
 
     @Query(value = "select * from users where user_name = ?1", nativeQuery = true)
-    User findByName(String userName);
+    public User findByName(String userName);
+
+/*    @Query(value = "delete from users where id = ?1", nativeQuery = true)
+    public User update(long id);*/
 
 }

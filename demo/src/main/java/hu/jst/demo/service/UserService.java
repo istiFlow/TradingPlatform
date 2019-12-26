@@ -26,8 +26,14 @@ public class UserService {
         return userRepository.findByName(userName);
     }
 
-    //POST
+    //CREATE
     public User saveUser(User user) {
+        return userRepository.save(user);
+    }
+
+    //UPDATE
+    public User updateUser(Long id, User user) {
+        userRepository.deleteById(id);
         return userRepository.save(user);
     }
 

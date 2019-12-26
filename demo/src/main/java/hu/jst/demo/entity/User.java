@@ -94,4 +94,19 @@ public class User {
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", cityOfBirth='" + cityOfBirth + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", budget=" + budget +
+                '}';
+    }
 }

@@ -14,12 +14,26 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+
+    //READ
     public List<User> getUsers() {
         return userRepository.findAll();
     }
 
+
+    //READ
     public User getSpecificUser(String userName) {
         return userRepository.findByName(userName);
+    }
+
+    //POST
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
+
+    //DELETE
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 
 }

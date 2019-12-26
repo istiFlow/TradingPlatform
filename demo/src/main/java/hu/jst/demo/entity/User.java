@@ -29,6 +29,17 @@ public class User {
 
     private User () {}
 
+    public User(String email, String password, String userName, String firstName, String lastName, String cityOfBirth, LocalDate dateOfBirth, int budget) {
+        this.email = email;
+        this.password = password;
+        this.userName = userName;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cityOfBirth = cityOfBirth;
+        this.dateOfBirth = dateOfBirth;
+        this.budget = budget;
+    }
+
     public Long getId() {
         return id;
     }

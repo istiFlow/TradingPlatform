@@ -11,6 +11,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Override
     List<User> findAll();
 
-    @Query(value = "select * from user where user_name = ?1", nativeQuery = true)
+    @Query(value = "select * from users where user_name = ?1", nativeQuery = true)
     User findByName(String userName);
+
 }

@@ -1,14 +1,8 @@
 package hu.jst.demo.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import hu.jst.demo.client.Outer;
-import hu.jst.demo.entity.TeslaQuoteEntity;
-import hu.jst.demo.entity.User;
-import hu.jst.demo.repository.TeslaRepository;
-import hu.jst.demo.repository.UserRepository;
+import hu.jst.demo.entity.StockEntity;
+import hu.jst.demo.repository.StockRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,19 +18,19 @@ public class TeslaService {
 
 
     @Autowired
-    TeslaRepository teslaRepository;
+    StockRepository stockRepository;
 
     //READ
-    public List<TeslaQuoteEntity> getTesla() {
-        return teslaRepository.findAll();
+    public List<StockEntity> getTesla() {
+        return stockRepository.findAll();
     }
 
     //CREATE
-    public TeslaQuoteEntity saveTesla(TeslaQuoteEntity tesla) {
-        return teslaRepository.save(tesla);
+    public StockEntity saveTesla(StockEntity tesla) {
+        return stockRepository.save(tesla);
     }
 
-    public TeslaQuoteEntity tesla () throws JsonProcessingException {
+    public StockEntity tesla () throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.set("x-rapidapi-key",  "03db22b5camshd34fd82b1dad7a3p13f99cjsn5141407b69d2");
@@ -47,7 +41,7 @@ public class TeslaService {
         if (response.getStatusCode() == HttpStatus.OK) {
             JSONObject obj = new JSONObject(response.getBody().toString());
             obj = obj.getJSONObject("Global Quote");
-            TeslaQuoteEntity item = new TeslaQuoteEntity(
+            StockEntity item = new StockEntity(
                     obj.optString("01. symbol"),
                     obj.optString("02. open"),
                     obj.optString("03. high"),

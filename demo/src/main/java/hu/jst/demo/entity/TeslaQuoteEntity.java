@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 
 @Entity
-@Table(name="tesla")
+@Table(name="teslas")
 public class TeslaQuoteEntity {
 
     @Id
@@ -21,7 +21,7 @@ public class TeslaQuoteEntity {
     @Column(name = "symbol")
     private String symbol;
 
-    @Column(name = "open")
+    @Column(name = "open_")
     private Double open;
 
     @Column(name = "high")
@@ -43,7 +43,7 @@ public class TeslaQuoteEntity {
     @Column(name = "previousClose")
     private Double previousClose;
 
-    @Column(name = "change")
+    @Column(name = "change_")
     private Double change;
 
 

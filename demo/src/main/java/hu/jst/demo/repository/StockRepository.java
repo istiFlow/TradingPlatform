@@ -1,13 +1,16 @@
 package hu.jst.demo.repository;
 
-import hu.jst.demo.entity.TeslaQuoteEntity;
+import hu.jst.demo.entity.StockEntity;
 import hu.jst.demo.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface TeslaRepository extends JpaRepository<TeslaQuoteEntity, Long> {
+public interface StockRepository extends JpaRepository<StockEntity, Long> {
     @Override
-    public List<TeslaQuoteEntity> findAll();
+    public List<StockEntity> findAll();
+
+    @Query(value = "select * from stocks where symbol = ?1", nativeQuery = true)
+    public StockEntity findBySymbol(String symbol);
 }

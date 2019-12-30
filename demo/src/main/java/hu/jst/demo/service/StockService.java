@@ -2,6 +2,7 @@ package hu.jst.demo.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import hu.jst.demo.entity.StockEntity;
+import hu.jst.demo.entity.User;
 import hu.jst.demo.repository.StockRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +15,20 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-public class TeslaService {
+public class StockService {
 
 
     @Autowired
     StockRepository stockRepository;
 
     //READ
-    public List<StockEntity> getTesla() {
+    public List<StockEntity> getStocks() {
         return stockRepository.findAll();
+    }
+
+    //READ
+    public StockEntity getSpecificStock(String symbol) {
+        return stockRepository.findBySymbol(symbol);
     }
 
     //CREATE

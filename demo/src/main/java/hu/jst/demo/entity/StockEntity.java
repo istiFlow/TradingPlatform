@@ -1,16 +1,12 @@
 package hu.jst.demo.entity;
 
-
-
-import hu.jst.demo.client.GlobalQuote;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
 
 @Entity
-@Table(name="teslas")
-public class TeslaQuoteEntity {
+@Table(name="stocks")
+public class StockEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -138,9 +134,9 @@ public class TeslaQuoteEntity {
         this.changePercent = changePercent;
     }
 
-    private TeslaQuoteEntity () {}
+    private StockEntity() {}
 
-    public TeslaQuoteEntity(String symbol, Double open, Double high, Double low, Double price, Integer volume, LocalDate latestTradingDay, Double previousClose, Double change, String changePercent) {
+    public StockEntity(String symbol, Double open, Double high, Double low, Double price, Integer volume, LocalDate latestTradingDay, Double previousClose, Double change, String changePercent) {
         this.symbol = symbol;
         this.open = open;
         this.high = high;
@@ -153,7 +149,7 @@ public class TeslaQuoteEntity {
         this.changePercent = changePercent;
     }
 
-    public TeslaQuoteEntity(String symbol, String open, String high, String low, String price, String volume, String latestTradingDay, String previousClose, String change, String changePercent) {
+    public StockEntity(String symbol, String open, String high, String low, String price, String volume, String latestTradingDay, String previousClose, String change, String changePercent) {
         this.symbol = symbol;
         setOpen(open);
         setHigh(high);
@@ -168,7 +164,7 @@ public class TeslaQuoteEntity {
 
     @Override
     public String toString() {
-        return "TeslaQuoteEntity {" +
+        return "StockQuoteEntity {" +
                 "id=" + id +
                 ", symbol='" + symbol + '\'' +
                 ", open=" + open +

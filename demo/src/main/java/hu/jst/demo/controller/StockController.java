@@ -2,10 +2,9 @@ package hu.jst.demo.controller;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.google.gson.Gson;
-import hu.jst.demo.entity.TeslaQuoteEntity;
+import hu.jst.demo.entity.StockEntity;
 import hu.jst.demo.entity.User;
-import hu.jst.demo.service.TeslaService;
+import hu.jst.demo.service.StockService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -13,16 +12,27 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
+import java.util.List;
 
 @RestController
-@RequestMapping("/stock")
-public class TeslaController {
+@RequestMapping("/")
+public class StockController {
 
     @Autowired
-    TeslaService teslaService;
+    StockService stockService;
+
+    @GetMapping ("stocks")
+    public String stocks() {
+        return stockService.getStocks().toString();
+    }
+
+    @GetMapping ("/{symbol}")
+    public StockEntity searchStocksByName(@PathVariable(value = "symbol") String symbol) {
+        return stockService.getSpecificStock(symbol);
+    }
 
     //Működik
-    @GetMapping("/data")
+    @GetMapping("/tesla")
     public ResponseEntity<String> tesla () throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
@@ -35,7 +45,7 @@ public class TeslaController {
             //System.out.println(response.toString());
             JSONObject obj = new JSONObject(response.getBody().toString());
             obj = obj.getJSONObject("Global Quote");
-            TeslaQuoteEntity item = new TeslaQuoteEntity(
+            StockEntity item = new StockEntity(
                     obj.optString("01. symbol"),
                     obj.optString("02. open"),
                     obj.optString("03. high"),
@@ -46,7 +56,7 @@ public class TeslaController {
                     obj.optString("08. previous close"),
                     obj.optString("09. change"),
                     obj.optString("10. change percent"));
-            teslaService.saveTesla(item);
+            stockService.saveTesla(item);
             System.out.println(item);
             return response;
         }
@@ -65,7 +75,7 @@ public class TeslaController {
             //System.out.println(response.toString());
             JSONObject obj = new JSONObject(response.getBody().toString());
             obj = obj.getJSONObject("Global Quote");
-            TeslaQuoteEntity item = new TeslaQuoteEntity(
+            StockEntity item = new StockEntity(
                     obj.optString("01. symbol"),
                     obj.optString("02. open"),
                     obj.optString("03. high"),
@@ -76,7 +86,7 @@ public class TeslaController {
                     obj.optString("08. previous close"),
                     obj.optString("09. change"),
                     obj.optString("10. change percent"));
-            teslaService.saveTesla(item);
+            stockService.saveTesla(item);
             System.out.println(item);
             return response;
         }
@@ -84,7 +94,7 @@ public class TeslaController {
     }
 
     @PostMapping(value = "/make", consumes="application/json")
-    public TeslaQuoteEntity createTesla(@RequestBody TeslaQuoteEntity tesla) {
-        return teslaService.saveTesla(tesla);
+    public StockEntity createTesla(@RequestBody StockEntity tesla) {
+        return stockService.saveTesla(tesla);
     }
 }

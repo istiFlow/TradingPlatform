@@ -13,4 +13,7 @@ public interface StockRepository extends JpaRepository<StockEntity, Long> {
 
     @Query(value = "select * from stocks where symbol = ?1", nativeQuery = true)
     public StockEntity findBySymbol(String symbol);
+
+    @Query(value = "select ?1 from users where user_name = ?1", nativeQuery = true)
+    public String findBySymbol2(String symbol);
 }

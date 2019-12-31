@@ -134,6 +134,7 @@ public class StockEntity {
         this.changePercent = changePercent;
     }
 
+
     private StockEntity() {}
 
     public StockEntity(String symbol, Double open, Double high, Double low, Double price, Integer volume, LocalDate latestTradingDay, Double previousClose, Double change, String changePercent) {

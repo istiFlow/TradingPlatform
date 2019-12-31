@@ -36,12 +36,12 @@ public class StockService {
         return stockRepository.save(tesla);
     }
 
-    public StockEntity tesla () throws JsonProcessingException {
+    public StockEntity stockDownloader (String symbol) throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.set("x-rapidapi-key",  "03db22b5camshd34fd82b1dad7a3p13f99cjsn5141407b69d2");
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        String resourceUrl = "https://alpha-vantage.p.rapidapi.com/query?symbol=TSLA&function=GLOBAL_QUOTE";
+        String resourceUrl = "https://alpha-vantage.p.rapidapi.com/query?symbol=" + symbol.toUpperCase() + "&function=GLOBAL_QUOTE";
         HttpEntity<String> entity = new HttpEntity<String>(headers);
         ResponseEntity<String> response = restTemplate.exchange(resourceUrl, HttpMethod.GET, entity, String.class);
         if (response.getStatusCode() == HttpStatus.OK) {
@@ -58,10 +58,22 @@ public class StockService {
                     obj.optString("08. previous close"),
                     obj.optString("09. change"),
                     obj.optString("10. change percent"));
-            System.out.println(item);
+
+
+            stockRepository.save(item);
             return item;
         }
         return null;
+    }
+
+    public StockEntity saveStock(StockEntity item) {
+        if(stockRepository.findBySymbol2(item.getSymbol()).equals(""){
+            stockRepository.save(item);
+            return item;
+        }
+        stockRepository.delete(stockRepository.findBySymbol2(item.getSymbol());
+
+
     }
 
     }

@@ -1,11 +1,9 @@
 package hu.jst.demo.repository;
 
 import hu.jst.demo.entity.StockEntity;
-import hu.jst.demo.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;

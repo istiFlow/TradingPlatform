@@ -2,7 +2,6 @@ package hu.jst.demo.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import hu.jst.demo.entity.StockEntity;
-import hu.jst.demo.entity.User;
 import hu.jst.demo.repository.StockRepository;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +29,9 @@ public class StockService {
     public StockEntity getSpecificStock(String symbol) {
         return stockRepository.findBySymbol(symbol);
     }
-
     //CREATE
-    public StockEntity saveTesla(StockEntity tesla) {
-        return stockRepository.save(tesla);
+    public StockEntity saveStock(StockEntity stock) {
+        return stockRepository.save(stock);
     }
 
     public StockEntity stockDownloader(String symbol) throws JsonProcessingException {

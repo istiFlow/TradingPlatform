@@ -3,16 +3,9 @@ package hu.jst.demo.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import hu.jst.demo.entity.StockEntity;
-import hu.jst.demo.entity.User;
 import hu.jst.demo.service.StockService;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.Collections;
-import java.util.List;
 
 @RestController
 @RequestMapping("/")
@@ -42,7 +35,7 @@ public class StockController {
     }
 
     @PostMapping(value = "/make", consumes="application/json")
-    public StockEntity createTesla(@RequestBody StockEntity tesla) {
-        return stockService.saveTesla(tesla);
+    public StockEntity createTesla(@RequestBody StockEntity stock) {
+        return stockService.saveStock(stock);
     }
 }

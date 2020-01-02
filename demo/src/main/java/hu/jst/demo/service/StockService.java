@@ -29,11 +29,13 @@ public class StockService {
     public StockEntity getSpecificStock(String symbol) {
         return stockRepository.findBySymbol(symbol);
     }
+
     //CREATE
     public StockEntity saveStock(StockEntity stock) {
         return stockRepository.save(stock);
     }
 
+    //DOWNLOAD METHOD
     public StockEntity stockDownloader(String symbol) throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
@@ -69,6 +71,11 @@ public class StockService {
                 obj.optString("09. change"),
                 obj.optString("10. change percent"));
         return item;
+    }
+
+    //DELETE
+    public void deleteStock(Long id) {
+        stockRepository.deleteById(id);
     }
 
 }

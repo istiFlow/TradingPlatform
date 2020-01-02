@@ -34,8 +34,13 @@ public class StockController {
         return item;
     }
 
-    @PostMapping(value = "/make", consumes="application/json")
-    public StockEntity createTesla(@RequestBody StockEntity stock) {
+    @PostMapping(value = "post", consumes="application/json")
+    public StockEntity createStock(@RequestBody StockEntity stock) {
         return stockService.saveStock(stock);
+    }
+
+    @DeleteMapping(value = "stock/{id}" )
+    public void deleteStock(@PathVariable long id) {
+        stockService.deleteStock(id);
     }
 }

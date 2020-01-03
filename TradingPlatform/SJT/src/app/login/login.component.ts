@@ -16,10 +16,11 @@ export class LoginComponent implements OnInit {
   email = 'email'
   password = ''
   invalidLogin = false
+  errorMessage = "Invalid login"
 
   handleLogin() {
     if(this.email==="vajgi90@gmail.com" && this.password === 'pass') {
-      this.router.navigate(['stocks', this.email])
+      this.router.navigate(['stocks'])
       this.invalidLogin = false
     } else {
       this.invalidLogin = true

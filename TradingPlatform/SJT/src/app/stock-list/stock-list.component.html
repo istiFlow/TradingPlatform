@@ -1,0 +1,13 @@
+<h6>Stock List</h6>
+
+<div *ngFor="let stock of stocks">
+  <div>Symbol: {{stock.symbol}}</div>
+  <div>&emsp;Open: {{stock.open}}</div>
+  <div>&emsp;Highest: {{stock.high}}</div>
+  <div>&emsp;Current price: {{stock.price}}</div>
+  <div>&emsp;Volume: {{stock.volume}}</div>
+  <div>&emsp;Previous Close: {{stock.previousClose}}</div> 
+  <div>&emsp;Change: {{stock.change}}</div> 
+  <div>&emsp;Change Percentage: {{stock.changePercent}}</div>
+  <br> 
+</div>

@@ -10,6 +10,8 @@ import { MenuComponent } from './menu/menu.component';
 import { StockListComponent } from './stock-list/stock-list.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { UserRegistrationService } from './services/user-registration.service';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { LogoutComponent } from './logout/logout.component';
     MenuComponent,
     StockListComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    RegisterComponent,
+    RegisterComponent
     
   ],
   imports: [

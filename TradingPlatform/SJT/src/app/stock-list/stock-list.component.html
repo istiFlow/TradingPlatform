@@ -1,6 +1,28 @@
 
+<table class = "stocks" *ngFor="let stock of stocks">
+  <tr>
+    <th>Symbol</th>
+    <th>Open</th>
+    <th>Highest</th>
+    <th>Current price</th>
+    <th>Volume</th>
+    <th>Previous Close</th>
+    <th>Change</th>
+    <th>Change Percentage</th>
+  </tr>
+  <tr>
+    <td>{{stock.symbol}}</td>
+    <td>{{stock.open}}</td>
+    <td>{{stock.high}}</td>
+    <td>{{stock.price}}</td>
+    <td>{{stock.volume}}</td>
+    <td>{{stock.previousClose}}</td>
+    <td>{{stock.change}}</td>
+    <td>{{stock.changePercent}}</td>
+  </tr>
+</table>
 
-<div class = "stocks" *ngFor="let stock of stocks">
+<!-- <div class = "stocks" *ngFor="let stock of stocks">
   <div>Symbol: {{stock.symbol}}</div>
   <div>&emsp;Open: {{stock.open}}</div>
   <div>&emsp;Highest: {{stock.high}}</div>
@@ -10,4 +32,4 @@
   <div>&emsp;Change: {{stock.change}}</div> 
   <div>&emsp;Change Percentage: {{stock.changePercent}}</div>
   <br> 
-</div>
+</div> -->

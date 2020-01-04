@@ -4,7 +4,7 @@
 
 <div class="box">
 
-  <h1>Login</h1>
+  <h1>Sign In</h1>
 
   <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
 
@@ -12,7 +12,8 @@
     Email : <input type="text" class="email" name="email" [(ngModel)] = "email">
     Password  : <input type="password" class="password" name="password" [(ngModel)] = "password">
 
-    <button (click)=handleLogin() class="btn">Login</button>
+    <button (click)=handleLogin() class="btn">Sign In</button>
+    <button (click)=handleRegistration() class="btn">Sign Up</button>
   
   </div>
 </div>

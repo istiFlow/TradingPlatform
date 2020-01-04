@@ -13,10 +13,10 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  email = 'email'
+  email = ''
   password = ''
   invalidLogin = false
-  errorMessage = "Invalid login"
+  errorMessage = "Invalid data"
 
   handleLogin() {
     if(this.email==="vajgi90@gmail.com" && this.password === 'pass') {

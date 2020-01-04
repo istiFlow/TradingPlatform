@@ -1,13 +1,19 @@
-<h4>Give me your email and password</h4>
-<div class="container">
+
+<div class="body">
+  
+
+<div class="box">
+
+  <h1>Login</h1>
 
   <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
 
   <div>
-    Email : <input type="text" name="email" [(ngModel)] = "email">
-    Password  : <input type="password" name="password" [(ngModel)] = "password">
+    Email : <input type="text" class="email" name="email" [(ngModel)] = "email">
+    Password  : <input type="password" class="password" name="password" [(ngModel)] = "password">
 
-    <button (click)=handleLogin()>Login</button>
+    <button (click)=handleLogin() class="btn">Login</button>
   
   </div>
+</div>
 </div>

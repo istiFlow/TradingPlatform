@@ -1,8 +1,16 @@
 
+body {
+  width: 100%;
+  height: 585px;
+  background:#89bee2;
+}
+
 .stocks {
   background:#89bee2;
   width: 100%;
-  height: 100%;
+  height: 100px;
   margin: 0px;
-  padding: 0px;
+  padding: 100px;
+  text-align: center;
+
 }

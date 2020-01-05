@@ -4,12 +4,14 @@
   <div class="box">
   
     <h1>Sign Up</h1>
+
+    <div class="alert alert-warning" *ngIf='validReg'>{{message}}</div>
   
-    <div class='message'>{{message}}</div>
   
     <div>
-      Email : <input type="text" class="email" name="email" [(ngModel)] = "user.email">
-      Password  : <input type="password" class="password" name="password" [(ngModel)] = "user.password">
+      Email : <input type="text" onfocus="this.value=''" class="email" name="email" [(ngModel)] = "user.email">
+      Password  : <input type="password" onfocus="this.value=''" class="password" name="password" [(ngModel)] = "user.password">
+      <div>{{message}}</div>
       <button (click)=handleRegister2() class="btn">Registration</button>
     
     </div>

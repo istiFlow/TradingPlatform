@@ -12,8 +12,7 @@ export class RegisterComponent implements OnInit {
 
   email = ''
   password = ''
-  invalidLogin = false
-  errorMessage = "Invalid data"
+  validReg = false;
   user: User = new User('','');
   message: any;
 
@@ -29,5 +28,7 @@ export class RegisterComponent implements OnInit {
     resp.subscribe(data => {
       this.message = data;
     });
+    this.validReg = true;
+    this.router.navigate(['login']);
   }
 }

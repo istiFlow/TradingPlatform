@@ -11,4 +11,9 @@ export class StockService {
   getAll(): Observable<any> {
     return this.http.get('//localhost:8080/stocks');
   }
+
+  getSpecificStock(symbol : string): Observable<any> {
+    return this.http.get('//localhost:8080/download/' + symbol);
+  }
+
 }

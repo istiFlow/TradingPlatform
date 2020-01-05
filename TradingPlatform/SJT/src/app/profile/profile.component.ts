@@ -22,6 +22,7 @@ export class ProfileComponent implements OnInit {
   temp: any;
   result: string[];
   output: string;
+  successMessage: string;
 
   handleProfile() {
     let resp = this.service.getUserByEmail(this.email);
@@ -35,7 +36,10 @@ export class ProfileComponent implements OnInit {
   }
 
   deleteProfile() {
-    let resp = this.service.deleteUserByEmail(this.email);
+    let resp = this.service.deleteUserByEmail(this.email)
+    .subscribe(() => this.successMessage = "Bye",
+    (err) => console.log(err))
+    this.router.navigate(['login']);
   }
 
   public spliter(item: string): string[] {

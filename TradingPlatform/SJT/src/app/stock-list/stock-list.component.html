@@ -27,16 +27,16 @@
   </tr>
 </tbody>
 </table>
+
+<div>
+<h6>If you want to search other stocks, just write the symbol into the box <a href="https://www.advfn.com/nasdaq/nasdaq.asp" target="_blank">(symbols)</a>!</h6>
+<h6>In the table from the sixth row the data will not refresh automatically.</h6>
+
+
+Symbol: <input type="text" class="symbol" name="symbol" [(ngModel)] = "symbol">
+
+<button (click)=handleSearch() class="btn">Search</button>
+</div>
+
 </body>
 
-<!-- <div class = "stocks" *ngFor="let stock of stocks">
-  <div>Symbol: {{stock.symbol}}</div>
-  <div>&emsp;Open: {{stock.open}}</div>
-  <div>&emsp;Highest: {{stock.high}}</div>
-  <div>&emsp;Current price: {{stock.price}}</div>
-  <div>&emsp;Volume: {{stock.volume}}</div>
-  <div>&emsp;Previous Close: {{stock.previousClose}}</div> 
-  <div>&emsp;Change: {{stock.change}}</div> 
-  <div>&emsp;Change Percentage: {{stock.changePercent}}</div>
-  <br> 
-</div> -->

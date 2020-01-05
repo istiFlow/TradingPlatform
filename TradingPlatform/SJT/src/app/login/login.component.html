@@ -6,13 +6,11 @@
 
   <h1>Sign In</h1>
 
-  <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+  <div class="alert alert-warning" *ngIf='invalidLogin'>{{result[0]}}</div>
 
   <div>
     Email: <input type="text" class="email" name="email" [(ngModel)] = "email">
     Password: <input type="password" class="password" name="password" [(ngModel)] = "password">
-
-    <div>{{output}}</div>
 
     <button (click)=handleLogin() class="btn">Sign In</button>
     <button routerLink="/register" class="btn">Sign Up</button>

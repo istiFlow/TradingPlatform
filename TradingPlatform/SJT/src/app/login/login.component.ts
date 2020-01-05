@@ -21,12 +21,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  email = ''
-  password = ''
+  email: string;
+  password: string;
+  temp: any;
   invalidLogin = false
   validLogin = false;
   user: User = new User('','');
-  result: Object;
+  result: string[];
   output: string;
 
   handleLogin() {
@@ -40,20 +41,20 @@ export class LoginComponent implements OnInit {
 
   handleLogin2() {
     let resp = this.service.getUserByEmailAndPassword(this.email, this.password);
-    resp.subscribe((data) => this.result = data);
-    this.output = Object.values(this.result).toString();
+    resp.subscribe((data) => this.temp = data);
+    this.output = Object.values(this.temp).toString();
+    this.result = this.spliter(this.output);
+    //console.log(this.result);
     if(this.output == "OK") {
-      this.router.navigate(['stocks'])
-      this.invalidLogin = false; 
-      this.validLogin = true;
+      this.router.navigate(['stocks']);
+      this.invalidLogin = false;
     } else {
       this.invalidLogin = true;
-      this.validLogin = true;
     }
   }
-
-  handleRegistration() {
-    this.router.navigate(['register'])
+  public spliter(item: string): string[] {
+    let arr = item.split(",");
+      return arr;
   }
 }
 

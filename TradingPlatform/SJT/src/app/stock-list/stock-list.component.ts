@@ -9,6 +9,9 @@ import { StockService } from '../shared/stock/stock.service';
 export class StockListComponent implements OnInit {
 
   stocks: Array<any>;
+  stocks2: Array<any>;
+  symbol : string;
+  isSearched = false;
 
   constructor(private stockService: StockService) { }
 
@@ -17,5 +20,15 @@ export class StockListComponent implements OnInit {
       this.stocks = data;
     });
   }
+
+  handleSearch() {
+    this.stockService.getSpecificStock(this.symbol)
+    .subscribe(data => {
+      this.stocks2 = data;
+    })
+    this.isSearched = true;
+  }
+
+
 
 }

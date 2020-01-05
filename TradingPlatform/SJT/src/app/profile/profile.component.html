@@ -1,0 +1,26 @@
+<body>
+  <div>
+
+    <h5>Give your email address to see the data!</h5>
+
+    Email: <input type="text" class="email" name="email" [(ngModel)] = "email">
+    <button (click)=handleProfile() class="btn">Submit</button>
+
+    <div>
+      
+      <ol>
+<li>ID: {{id}}</li>
+<li>EMAIL: {{email}}</li>
+<li>PASSWORD: {{password}}</li>
+      </ol>
+      
+    </div>
+
+    <h5>Push the delete button to delete your registration!</h5>
+
+    <button (click)=handleProfile() class="btn2">Delete</button>
+
+
+  
+  </div>
+</body>

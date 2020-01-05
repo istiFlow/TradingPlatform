@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import {User} from '../user'
-import { UserRegistrationService } from '../services/user-registration.service';
 import { UserLoginService } from '../services/user-login.service';
 import { Auth } from '../auth';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -24,9 +24,10 @@ export class LoginComponent implements OnInit {
   email = ''
   password = ''
   invalidLogin = false
+  validLogin = false;
   user: User = new User('','');
   result: Object;
-  output;
+  output: string;
 
   handleLogin() {
     if(this.email==="vajgi90@gmail.com" && this.password === 'pass') {
@@ -38,14 +39,16 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin2() {
-    let resp = this.service.getUserByEmail(this.email, this.password);
+    let resp = this.service.getUserByEmailAndPassword(this.email, this.password);
     resp.subscribe((data) => this.result = data);
     this.output = Object.values(this.result).toString();
     if(this.output == "OK") {
       this.router.navigate(['stocks'])
       this.invalidLogin = false; 
-    } {
+      this.validLogin = true;
+    } else {
       this.invalidLogin = true;
+      this.validLogin = true;
     }
   }
 

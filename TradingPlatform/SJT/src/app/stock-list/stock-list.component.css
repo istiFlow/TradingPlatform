@@ -1,5 +1,6 @@
 
 body {
+  padding-top: 25px;
   width: 100%;
   height: 585px;
   background:#89bee2;
@@ -11,6 +12,7 @@ body {
   height: 100px;
   margin: 0px;
   padding: 100px;
+  padding-top: 100px;
   text-align: center;
 
 }

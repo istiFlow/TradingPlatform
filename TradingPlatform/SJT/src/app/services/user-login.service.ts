@@ -13,8 +13,16 @@ export class UserLoginService {
 
   constructor(private http: HttpClient) { }
 
-  public getUserByEmail(email, password) {
+  public getUserByEmailAndPassword(email, password) {
     return this.http.get("http://localhost:8080/user/"+email+"&"+password);
+  }
+
+  public getUserByEmail(email) {
+    return this.http.get("http://localhost:8080/user/"+email);
+  }
+
+  public deleteUserByEmail(email) {
+    return this.http.delete("http://localhost:8080/user/"+email);
   }
 
   public getUserByEmai2(email, password) {

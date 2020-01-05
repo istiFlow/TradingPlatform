@@ -165,7 +165,7 @@ public class StockEntity {
 
     @Override
     public String toString() {
-        return "StockQuoteEntity {" +
+        return " {" +
                 "id=" + id +
                 ", symbol='" + symbol + '\'' +
                 ", open=" + open +

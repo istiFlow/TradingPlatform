@@ -5,20 +5,33 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import hu.jst.demo.entity.StockEntity;
 import hu.jst.demo.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/")
+@CrossOrigin(origins = "http://localhost:4200")
 public class StockController {
 
     @Autowired
     StockService stockService;
 
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     //Get every stocks from the database
     @GetMapping ("stocks")
-    public String stocks() {
-        return stockService.getStocks().toString();
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Collection<StockEntity> americanStocks() {
+        return stockService.getStocks().stream()
+                .collect(Collectors.toList());
     }
+
+    //public String stocks() {return stockService.getStocks().toString();
+
 
     //Get specific stock by name
     @GetMapping ("/{name}")

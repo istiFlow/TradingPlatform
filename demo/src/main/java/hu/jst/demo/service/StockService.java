@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
 
@@ -14,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
+@CrossOrigin(origins = "http://localhost:4200")
 public class StockService {
 
 

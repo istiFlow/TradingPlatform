@@ -8,12 +8,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 import java.util.List;
 
 @Service
 @EnableWebSecurity
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserService {
 
     @Autowired
@@ -24,14 +26,14 @@ public class UserService {
 
 
     //LOGIN
-    public User login(String email, String password) {
+    public Boolean login(String email, String password) {
         User temp = userRepository.findByEmail(email);
         if(temp != null) {
             if(passwordEncoder.matches(password, temp.getPassword())) {
-                return temp;
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     //READ
@@ -40,8 +42,8 @@ public class UserService {
     }
 
     //READ
-    public User getSpecificUser(String userName) {
-        return userRepository.findByEmail(userName);
+    public User getSpecificUser(String email) {
+        return userRepository.findByEmail(email);
     }
 
     //CREATE

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-page-not-found',
   template: `
-  <body style="background:#89bee2; width: 100%; height: 585px;">
+  <body style="background:#89bee2; width: 100%; height: 565px;">
 
    <h3 style="text-align:center; padding-top: 50px; color:#525252">Page Not Found</h3> 
 
@@ -15,7 +15,6 @@ import { Component, OnInit } from '@angular/core';
    border-radius:4px;
    border: #27ae60 1px solid;
    
-   margin-top:20px;
    margin-bottom:20px;
    float:left;
    margin-left:45%;

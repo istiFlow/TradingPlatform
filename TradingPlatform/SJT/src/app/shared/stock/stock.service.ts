@@ -16,4 +16,8 @@ export class StockService {
     return this.http.get('//localhost:8080/download/' + symbol);
   }
 
+  deleteSpecificStock(symbol : string): Observable<any> {
+    return this.http.delete('//localhost:8080/stock/' + symbol);
+  }
+
 }

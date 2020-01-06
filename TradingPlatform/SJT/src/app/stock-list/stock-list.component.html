@@ -1,41 +1,79 @@
 
 <body>
   
-<table class = "stocks" >
-  <thead>
-  <tr>
-    <th>Symbol</th>
-    <th>Open</th>
-    <th>Highest</th>
-    <th>Current price</th>
-    <th>Volume</th>
-    <th>Previous Close</th>
-    <th>Change</th>
-    <th>Change Percentage</th>
-  </tr>
-</thead>
-<tbody>
-  <tr *ngFor="let stock of stocks">
-    <td>{{stock.symbol}}</td>
-    <td>{{stock.open}}</td>
-    <td>{{stock.high}}</td>
-    <td>{{stock.price}}</td>
-    <td>{{stock.volume}}</td>
-    <td>{{stock.previousClose}}</td>
-    <td>{{stock.change}}</td>
-    <td>{{stock.changePercent}}</td>
-  </tr>
-</tbody>
+<table mat-table [dataSource]="stocks" matSort class="stocks" >
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="open">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Open </th>
+    <td mat-cell *matCellDef="let element"> {{element.open}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="high">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Highest </th>
+    <td mat-cell *matCellDef="let element"> {{element.high}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="low">
+    <th mat-header-cell *matHeaderCellDef> Lowest </th>
+    <td mat-cell *matCellDef="let element"> {{element.low}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Current Price </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="volume">
+    <th mat-header-cell *matHeaderCellDef> Volume </th>
+    <td mat-cell *matCellDef="let element"> {{element.volume}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="latestTradingDay">
+    <th mat-header-cell *matHeaderCellDef> Latest Trading Day </th>
+    <td mat-cell *matCellDef="let element"> {{element.latestTradingDay}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="previousClose">
+    <th mat-header-cell *matHeaderCellDef> Previous Close </th>
+    <td mat-cell *matCellDef="let element"> {{element.previousClose}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="change">
+    <th mat-header-cell *matHeaderCellDef> Change </th>
+    <td mat-cell *matCellDef="let element"> {{element.change}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="changePercent">
+    <th mat-header-cell *matHeaderCellDef> Change Percentage </th>
+    <td mat-cell *matCellDef="let element"> {{element.changePercent}} </td>
+  </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
 </table>
 
 <div>
-<h6>If you want to search other stocks, just write the symbol into the box <a href="https://www.advfn.com/nasdaq/nasdaq.asp" target="_blank">(symbols)</a>!</h6>
+<h6>If you want to search other stocks, just write the symbol into the box <a href="https://www.advfn.com/nasdaq/nasdaq.asp" target="_blank">symbols</a>!</h6>
 <h6>In the table from the sixth row the data will not refresh automatically.</h6>
-
+<h6>If you want to delete a stock write the symbol into the box and press DELETE.</h6>
 
 Symbol: <input type="text" class="symbol" name="symbol" [(ngModel)] = "symbol">
 
-<button (click)=handleSearch() class="btn">Search</button>
+<button mat-flat-button (click)=handleSearch() class="btn">Search</button>
+
+<button mat-flat-button (click)=handleDelete() class="btn">Delete</button>
+
 </div>
 
 </body>

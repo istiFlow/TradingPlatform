@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   temp: any;
   invalidLogin = false
   validLogin = false;
-  user: User = new User('','');
+  user: User = new User("","");
   result: string[];
   output: string;
 
@@ -40,11 +40,9 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin2() {
-    let resp = this.service.getUserByEmailAndPassword(this.email, this.password);
+    let resp = this.service.getUser(this.user);
     resp.subscribe((data) => this.temp = data);
     this.output = Object.values(this.temp).toString();
-    this.result = this.spliter(this.output);
-    //console.log(this.result);
     if(this.output == "OK") {
       this.router.navigate(['stocks']);
       this.invalidLogin = false;

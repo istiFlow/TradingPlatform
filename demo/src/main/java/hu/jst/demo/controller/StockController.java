@@ -52,8 +52,13 @@ public class StockController {
         return stockService.saveStock(stock);
     }
 
-    @DeleteMapping(value = "stock/{id}" )
+/*    @DeleteMapping(value = "stock/{id}" )
     public void deleteStock(@PathVariable long id) {
         stockService.deleteStock(id);
+    }*/
+
+    @DeleteMapping(value = "stock/{symbol}")
+    public void deleteUser(@PathVariable String symbol) {
+        stockService.deleteStockByEmail(symbol);
     }
 }

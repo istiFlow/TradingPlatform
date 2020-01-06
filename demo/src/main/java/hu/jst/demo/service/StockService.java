@@ -80,6 +80,11 @@ public class StockService {
         stockRepository.deleteById(id);
     }
 
+    //DELETE
+    public void deleteStockByEmail(String symbol) {
+        stockRepository.deleteByEmail(symbol);
+    }
+
 }
 
 

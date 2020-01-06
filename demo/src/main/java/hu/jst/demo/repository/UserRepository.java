@@ -1,10 +1,12 @@
 package hu.jst.demo.repository;
 
 import hu.jst.demo.entity.User;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import javax.transaction.Transactional;
 
 import java.util.List;
 
@@ -17,4 +19,12 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     @Query(value = "select * from users_login where email = ?1", nativeQuery = true)
     public User findByEmail (String userName);
+
+    @Transactional
+    @Modifying
+    @Query(value = "delete from  users_login where email = ?1", nativeQuery = true)
+    public void deleteByEmail (String email);
+
+    @Query(value = "SELECT EXISTS(SELECT * FROM users_login WHERE email = ?1)", nativeQuery = true)
+    public int isExist(String email);
 }

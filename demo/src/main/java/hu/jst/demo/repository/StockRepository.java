@@ -42,4 +42,9 @@ public interface StockRepository extends JpaRepository<StockEntity, Long> {
     @Query(value = "SELECT EXISTS(SELECT * FROM stocks WHERE symbol = ?1)", nativeQuery = true)
     public int isExist(String symbol);
 
+    @Transactional
+    @Modifying
+    @Query(value = "DELETE FROM stocks WHERE symbol = ?1", nativeQuery = true)
+    public void deleteByEmail (String symbol);
+
 }

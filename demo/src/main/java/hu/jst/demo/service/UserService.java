@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.List;
 
 @Service
-@EnableWebSecurity
+//@EnableWebSecurity
 @CrossOrigin(origins = "http://localhost:4200")
 public class UserService {
 
@@ -62,5 +62,13 @@ public class UserService {
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
+    //DELETE
+    public void deleteUserByEmail(String email) {
+        userRepository.deleteByEmail(email);
+    }
+
+    //EXIST
+    public int userIsExist(String email) { return userRepository.isExist(email);}
 
 }

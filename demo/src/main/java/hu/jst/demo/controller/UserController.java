@@ -42,19 +42,7 @@ public class UserController {
         return null;
     }
 
-    @GetMapping ("login/{email}&{password}")
-    public Auth searchUsersByName(@PathVariable(name = "email") String email, @PathVariable(name = "password") String password) {
-        User temp = userService.getSpecificUser(email);
-        if(passwordEncoder.matches(password, temp.getPassword())){
-                Auth response = new Auth("OK");
-                return response;
-        } else {
-            Auth response = new Auth("NO");
-            return response;
-        }
-    }
-
-    @PostMapping(value = "/juser/login", consumes="application/json")
+    @PostMapping(value = "/user/login", consumes="application/json")
     public Auth createUserValidation(@RequestBody User item) {
         User temp = userService.getSpecificUser(item.getEmail());
         if(passwordEncoder.matches(item.getPassword(), temp.getPassword())){
@@ -66,17 +54,17 @@ public class UserController {
 
     }
 
-    @PostMapping(value = "/user/login", consumes="application/json")
+/*    @PostMapping(value = "/user/login", consumes="application/json")
     public Auth createUserValidation2(@RequestBody User item) {
         User temp = userService.getSpecificUser(item.getEmail());
         if(item.getPassword().equals(temp.getPassword())){
             Auth response = new Auth("OK");
             return response;
         }
-        Auth response = new Auth("NO");
+        Auth response = new Auth("WRONG");
         return response;
 
-    }
+    }*/
 
     @PostMapping(value = "register" /*consumes="application/json"*/)
     public String createUser(@RequestBody User user) {
@@ -85,9 +73,9 @@ public class UserController {
         return "Hi " + user.getEmail() + " your registration process succesfully completed";
     }
 
-    @PutMapping(value = "user/{id}", consumes="application/json")
-    public User updateUser(@PathVariable Long id, @RequestBody User user) {
-        return userService.updateUser(id, user);
+    @PutMapping(value = "user" /*consumes="application/json"*/)
+    public User updateUser(@RequestBody User user) {
+        return userService.saveUser(user);
     }
 
 /*    @DeleteMapping(value = "user/{id}" )
@@ -96,10 +84,14 @@ public class UserController {
     }*/
 
     @DeleteMapping(value = "user/{email}")
-    public void deleteUser(@PathVariable String email) {
+    public Auth deleteUser(@PathVariable String email) {
         userService.deleteUserByEmail(email);
+        if (userService.getSpecificUser(email) == null) {
+            Auth response = new Auth("OK");
+            return response;
+        }
+        Auth response = new Auth("WRONG");
+        return response;
     }
-
-
 
 }

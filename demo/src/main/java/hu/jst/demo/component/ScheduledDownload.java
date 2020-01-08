@@ -12,15 +12,17 @@ import org.springframework.stereotype.Component;
 @EnableScheduling
 public class ScheduledDownload {
 
+    private String[] stockList = {"PLUG", "FCEL", "AAPL", "CTIB", "CSCO", "MSFT", "SIRI", "INTEL"
+    , "CMSCA", "ARQL", "LIFE", "MRLV", "BGCP", "MYL", "AMAT", "QCOM", "GILD", "BBBY", "HBAN", "NVDA",
+    "EBAY", "ACOR", "NFLX", "GPOR", "SPPI", "SBUX", "AGNC", "ATVI", "TEAM", "OSTK", "GOOGL", "TSLA", "AMZN"};
+
     @Autowired
     StockService stockService;
 
-    @Scheduled(fixedRate = 600000)
+    @Scheduled(fixedRate = 600000000)
     public void downloadStocks() throws JsonProcessingException {
-        stockService.stockDownloader(StockSymbols.TSLA.toString());
-        stockService.stockDownloader(StockSymbols.GOOGL.toString());
-        stockService.stockDownloader(StockSymbols.AMZN.toString());
-        stockService.stockDownloader(StockSymbols.AAPL.toString());
-        stockService.stockDownloader(StockSymbols.MSFT.toString());
+        for (int i = 0; i < stockList.length; i++) {
+            stockService.stockDownloader(stockList[i]);
+        }
     }
 }

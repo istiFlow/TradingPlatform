@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {MatButtonModule, MatTableModule, MatSortModule} from '@angular/material';
+import {MatButtonModule, MatTableModule, MatSortModule, MatToolbarModule, MatProgressSpinnerModule, MatFormFieldModule, MatInputModule, MatListModule} from '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
 
 
@@ -7,7 +7,12 @@ const MaterialComponents = [
   MatButtonModule,
   MatMenuModule,
   MatTableModule,
-  MatSortModule
+  MatSortModule,
+  MatProgressSpinnerModule,
+  MatToolbarModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatListModule
 ];
 
 @NgModule({

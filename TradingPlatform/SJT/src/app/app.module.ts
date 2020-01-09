@@ -6,11 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
-import { MenuComponent } from './menu/menu.component';
 import { StockListComponent } from './stock-list/stock-list.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
-import { UserRegistrationService } from './services/user-registration.service';
 import { RegisterComponent } from './register/register.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -21,7 +19,6 @@ import { MaterialModule } from './material/material.module';
   declarations: [
     AppComponent,
     FooterComponent,
-    MenuComponent,
     StockListComponent,
     LoginComponent,
     LogoutComponent,

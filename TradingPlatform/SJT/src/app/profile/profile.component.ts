@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserLoginService } from '../services/user-login.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,15 +10,16 @@ import { UserLoginService } from '../services/user-login.service';
 export class ProfileComponent implements OnInit {
 
   constructor(private router: Router, 
-    private service: UserLoginService) { }
+    private service: AuthService) { }
 
   ngOnInit() {
   }
 
+  userData = {}
+
   id : number;
   email = '';
   password = '';
-  isDownload = false;
   temp: any;
   result: string[];
   output: string;
@@ -27,7 +28,6 @@ export class ProfileComponent implements OnInit {
   handleProfile() {
     let resp = this.service.getUserByEmail(this.email);
     resp.subscribe((data) => this.temp = data);
-    this.isDownload = true;
     this.output = Object.values(this.temp).toString();
     this.result = this.spliter(this.output)
     this.id = parseInt(this.result[0]);
@@ -46,8 +46,5 @@ export class ProfileComponent implements OnInit {
     let arr = item.split(",");
       return arr;
   }
-
-
-
 
 }

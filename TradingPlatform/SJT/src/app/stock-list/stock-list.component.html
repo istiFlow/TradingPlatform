@@ -1,7 +1,7 @@
 
 <body>
   
-<table mat-table [dataSource]="stocks" matSort class="stocks" >
+<table mat-table [dataSource]="stocks" class="stocks" >
 
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -9,17 +9,17 @@
     </ng-container>
 
   <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
     <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
   </ng-container>
 
   <ng-container matColumnDef="open">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Open </th>
+    <th mat-header-cell *matHeaderCellDef> Open </th>
     <td mat-cell *matCellDef="let element"> {{element.open}} </td>
   </ng-container>
 
   <ng-container matColumnDef="high">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Highest </th>
+    <th mat-header-cell *matHeaderCellDef> Highest </th>
     <td mat-cell *matCellDef="let element"> {{element.high}} </td>
   </ng-container>
 
@@ -65,14 +65,19 @@
 
 <div>
 <h6>If you want to search other stocks, just write the symbol into the box <a href="https://www.advfn.com/nasdaq/nasdaq.asp" target="_blank">symbols</a>!</h6>
-<h6>In the table from the sixth row the data will not refresh automatically.</h6>
-<h6>If you want to delete a stock write the symbol into the box and press DELETE.</h6>
 
-Symbol: <input type="text" class="symbol" name="symbol" [(ngModel)] = "symbol">
+<h6>If you want to delete a stock write the symbol into the box and press Delete.</h6>
 
-<button mat-flat-button (click)=handleSearch() class="btn">Search</button>
+<div>
+<mat-form-field floatLabel="never" appearance="outline" color="warm" >
+  <mat-label>Symbol</mat-label>
+  <input matInput type="text" class="symbol" [(ngModel)] = "symbol">
+</mat-form-field>
+</div>
 
-<button mat-flat-button (click)=handleDelete() class="btn">Delete</button>
+<button mat-raised-button (click)=handleSearch() class="btn">Search</button>
+
+<button mat-raised-button (click)=handleDelete() class="btn">Delete</button>
 
 </div>
 

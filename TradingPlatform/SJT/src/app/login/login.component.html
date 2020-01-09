@@ -6,18 +6,14 @@
 
   <h1>Sign In</h1>
 
-  <div class="alert alert-warning" *ngIf='invalidLogin'>{{output | json}}</div>
 
   <div>
-    Email: <input type="text" class="email" name="email" [(ngModel)] = "user.email">
-    Password: <input type="password" class="password" name="password" [(ngModel)] = "user.password">
+    Email: <input type="text" class="email" name="email" [(ngModel)] = "loginUserData.email">
+    Password: <input type="password" class="password" name="password" [(ngModel)] = "loginUserData.password">
 
-    <button  (click)=handleLogin2() class="btn">Sign In</button>
-    <button mat-menu-item routerLink="/register" class="btn">Sign Up</button>
-
-
-   <h2>{{output | json}}</h2>  
-  
+    <button mat-raised-button (click)=handleLogin() class="btn">Sign In</button>
+    <button  mat-raised-button routerLink="/register" class="btn">Sign Up</button>
   </div>
 </div>
+<mat-spinner *ngIf="showSpinner" class="spinner" [diameter]="50"></mat-spinner>
 </div>

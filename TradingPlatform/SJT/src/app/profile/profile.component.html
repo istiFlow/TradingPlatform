@@ -3,22 +3,25 @@
 
     <h5>Give your email address to see the data!</h5>
 
-    Email: <input type="text" class="email" name="email" [(ngModel)] = "email">
-    <button (click)=handleProfile() class="btn">Submit</button>
-
     <div>
-      
-      <ol>
-<li>ID: {{id}}</li>
-<li>EMAIL: {{email}}</li>
-<li>PASSWORD: {{password}}</li>
-      </ol>
-      
+      <mat-form-field appearance="outline" color="warm">
+        <mat-label>Email</mat-label>
+        <input matInput type="text" class="email" [(ngModel)] = "email">
+      </mat-form-field>
     </div>
 
-    <h5>Push the delete button to delete your registration!</h5>
+    <button mat-raised-button (click)=handleProfile() class="btn">Submit</button>
+      
+      <ol mat-list>
+        <mat-list-item>ID: {{id}}</mat-list-item>
+        <mat-list-item>EMAIL: {{email}}</mat-list-item>
+        <mat-list-item>PASSWORD: {{password}}</mat-list-item>
+      </ol>
+      
 
-    <button (click)=deleteProfile() class="btn2">Delete</button>
+    <h5>Push the delete button to delete your registration!</h5>
+      
+    <button mat-raised-button (click)=deleteProfile() class="btn">Delete</button>
 
   </div>
 </body>
